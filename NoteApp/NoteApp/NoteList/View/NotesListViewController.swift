@@ -17,9 +17,14 @@ class NotesListViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Notes"
-        navigationController?.navigationBar.prefersLargeTitles = true
+    
         setupTableView()
         setupToolsBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     //MARK: - Private methods
@@ -41,7 +46,8 @@ class NotesListViewController: UITableViewController {
     
     @objc
     private func addAction () {
-        
+        let noteViewController = NoteViewController()
+        navigationController?.pushViewController(noteViewController, animated: true)
     }
     
 }
@@ -73,5 +79,12 @@ extension NotesListViewController {
 
 //MARK: - UITableViewDelegate
 extension NotesListViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let note = viewModel?.section[indexPath.section].items[indexPath.row] as? Note else { return }
+        let noteViewController = NoteViewController()
+        noteViewController.set(note: note)
+        navigationController?.pushViewController(noteViewController, animated: true)
+    }
     
 }

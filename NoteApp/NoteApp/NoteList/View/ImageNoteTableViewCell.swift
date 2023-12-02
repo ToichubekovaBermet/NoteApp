@@ -18,7 +18,7 @@ final class ImageNoteTableViewCell: UITableViewCell {
         return view
        }()
     
-    private let attchmentView : UIImageView = {
+    private let attachmentView : UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
@@ -52,13 +52,13 @@ final class ImageNoteTableViewCell: UITableViewCell {
         titleLabel.text = note.title
         guard let imageData = note.image,
               let image = UIImage(data: imageData) else { return }
-        attchmentView.image = image
+        attachmentView.image = image
     }
     
     //MARK: - Private methods
     private func setupUI() {
         addSubview(containerView)
-        containerView.addSubview(attchmentView)
+        containerView.addSubview(attachmentView)
         containerView.addSubview(titleLabel)
         
         setupConstraints()
@@ -70,13 +70,13 @@ final class ImageNoteTableViewCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(10)
         }
         
-        attchmentView.snp.makeConstraints { make in
+        attachmentView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(5)
             make.height.equalTo(100)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(attchmentView.snp.bottom).offset(10)
+            make.top.equalTo(attachmentView.snp.bottom).offset(10)
             make.leading.trailing.bottom.equalToSuperview().inset(10)
         }
     }

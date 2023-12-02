@@ -28,12 +28,12 @@ final class NotesListViewModel: NotesListViewModelProtocol {
         let section = TableViewSection(title: "1 Dec 2023",
                                        items: [ 
                                         Note(title: "First note",
-                                                     descreption: "First note description",
+                                                     description: "First note description",
                                                      date: Date(),
                                                      imageUrl: nil,
                                                      image: nil),
                                         Note(title: "First note",
-                                                     descreption: "First note description",
+                                                     description: "First note description",
                                                      date: Date(),
                                                      imageUrl: nil,
                                                      image: nil)
